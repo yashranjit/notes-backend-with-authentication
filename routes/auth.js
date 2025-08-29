@@ -4,10 +4,11 @@ const z = require("zod");
 const { bodySchema } = require("../utils/validate");
 const bcrypt = require("bcrypt");
 const { UserModel } = require("../models/user");
-const jwt = require("jsonwebtoekn");
+const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../config");
 
 authRouter.post("/signup", async (req, res) => {
+  
   const parsedData = bodySchema.safeParse(req.body);
   if (!parsedData.success) {
     return res.json({
